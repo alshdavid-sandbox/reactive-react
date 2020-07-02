@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { create, subscribe } from "../create"
+import { patch, subscribe } from "../index"
 
 export const useViewModel: ViewModelFactory = (ctor: any, ...args: any[]) => {
   const [ vm ] = useState(() => {
@@ -12,7 +12,7 @@ export const useViewModel: ViewModelFactory = (ctor: any, ...args: any[]) => {
   const forceUpdate = useState(Object.create(null))[1]
 
   useEffect(() => {
-    const vm$ = create(vm)
+    const vm$ = patch(vm)
     const sub = subscribe(vm$, () => forceUpdate(Object.create(null)))
     return () => sub.unsubscribe()
   }, [ctor, forceUpdate, vm])
