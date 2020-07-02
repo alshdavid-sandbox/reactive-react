@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalContext, useGlobalContext } from 'global-context'
+import { GlobalContext } from 'global-context'
 import { HomePage } from './pages'
 
 const services = {
-
 }
 
 const App = () => {
@@ -14,6 +13,6 @@ const App = () => {
 }
 
 export function main() {
-  ReactDOM.render(<GlobalContext.Provider value={'hii'}><App /></GlobalContext.Provider>,
+  ReactDOM.render(<GlobalContext.Provider value={services}><App /></GlobalContext.Provider>,
   document.getElementById('root'))
 }
